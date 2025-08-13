@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.args
+      args:
+        - BASE_IMAGE=${BASE_IMAGE}
+        - INSTALL_CONDA=${INSTALL_CONDA}
+    image: basic_gpuuse:${COMPOSE_PROJECT_NAME:-local}
+    ports:
+      - "8888:8888"
+      - "7860:7860"
+      - "6006:6006"
+    volumes:
+      - ./app:/app
+      - ./docker-entrypoint.d:/docker-entrypoint.d
+    stdin_open: true
+    tty: true

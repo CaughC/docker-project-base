@@ -25,10 +25,10 @@ jobs:
         chmod +x /usr/local/bin/docker-compose
 
     - name: Build and run container with GPU config
-      run: docker-compose --env-file configs/gpu-conda.env up --build -d
+      run: docker-compose -f docker-compose.ci.yml --env-file configs/gpu-conda.env up --build -d
 
     - name: Wait for container to be healthy (optional, but good practice)
       run: sleep 10 # Give container some time to start up
 
     - name: Check GPU availability inside container
-      run: docker-compose exec app python -c "import torch; print(torch.cuda.is_available())"
+      run: docker-compose -f docker-compose.ci.yml exec app python -c "import torch; print(torch.cuda.is_available())"
