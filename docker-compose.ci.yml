@@ -14,12 +14,5 @@ services:
     volumes:
       - ./app:/app
       - ./docker-entrypoint.d:/docker-entrypoint.d
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
     stdin_open: true
     tty: true
