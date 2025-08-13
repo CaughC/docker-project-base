@@ -12,7 +12,7 @@ services:
       - "7860:7860"
       - "6006:6006"
     volumes:
-      - /mnt/d/oozingmoods/sandcham_refine:/local_mount
+      - ./app:/app
       - ./docker-entrypoint.d:/docker-entrypoint.d
     deploy:
       resources:
