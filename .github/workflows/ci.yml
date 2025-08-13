@@ -29,6 +29,3 @@ jobs:
 
     - name: Wait for container to be healthy (optional, but good practice)
       run: sleep 10 # Give container some time to start up
-
-    - name: Check GPU availability inside container
-      run: docker-compose -f docker-compose.ci.yml exec app python -c "import torch; print(torch.cuda.is_available())"

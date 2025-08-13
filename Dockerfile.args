@@ -7,6 +7,7 @@ FROM ${BASE_IMAGE}
 # Define build arguments for Conda and GPU
 ARG INSTALL_CONDA=false
 ARG INSTALL_GPU=false
+ENV INSTALL_GPU=${INSTALL_GPU}
 
 ENV TZ=Asia/Tokyo
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
