@@ -39,6 +39,33 @@ Follow these steps to get your Docker environment up and running:
     docker-compose down
     ```
 
+## 🚀 Starting a New Project from this Template
+
+This repository is designed to be used as a template for new Docker-based projects. The `new_project.sh` script automates the initial setup process.
+
+1.  **Clone this template repository:**
+    ```bash
+    git clone https://github.com/your-username/your-template-repo.git # Replace with the actual URL of this template
+    cd your-template-repo # Navigate into the cloned template directory
+    ```
+
+2.  **Run the setup script:**
+    Execute `new_project.sh` with your desired new project name. This script will:
+    *   Create a new directory with your project name.
+    *   Copy all template files into it.
+    *   Initialize a fresh Git repository in the new project directory.
+    *   Start the Docker container for immediate development.
+
+    ```bash
+    ./new_project.sh my-awesome-new-project
+    ```
+    (Replace `my-awesome-new-project` with the actual name of your new project.)
+
+3.  **Follow the on-screen instructions:**
+    The script will provide clear instructions on how to access your development container, start coding, and push your new project to a remote Git repository.
+
+**Important:** After cloning this template, remember to update the `TEMPLATE_REPO_URL` variable inside `new_project.sh` with the actual URL of your hosted template repository. This ensures that future users can correctly clone the template.
+
 ## ⚙️ How It Works
 
 ### Build Configurations

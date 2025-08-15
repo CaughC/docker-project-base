@@ -2,7 +2,7 @@
 
 # --- Configuration ---
 TEMPLATE_REPO_URL="https://github.com/your-username/your-template-repo.git" # <--- IMPORTANT: Replace with the actual URL of this template repository
-DEFAULT_ENV_FILE="configs/gpu-conda.env"
+DEFAULT_ENV_FILE="docker/configs/gpu-conda.env"
 
 # --- Functions ---
 function display_help {
@@ -58,10 +58,10 @@ fi
 
 # 3. Start the Docker container for in-container development
 echo "Building and starting Docker container for development (using $DEFAULT_ENV_FILE)..."
-docker-compose --env-file "$DEFAULT_ENV_FILE" up --build -d
+docker-compose -f docker/docker-compose.yml --env-file "$DEFAULT_ENV_FILE" up --build -d
 if [[ $? -ne 0 ]]; then
   echo "Warning: Docker container failed to start. Please check the Docker logs for details."
-  echo "You can try to debug with: 'docker-compose --env-file $DEFAULT_ENV_FILE up --build'"
+  echo "You can try to debug with: 'docker-compose -f docker/docker-compose.yml --env-file $DEFAULT_ENV_FILE up --build'"
 fi
 
 echo "--- Project Setup Complete! ---"
@@ -69,7 +69,7 @@ echo ""
 echo "Next Steps:"
 echo "1.  **Access your development container:**"
 echo "    cd $NEW_PROJECT_NAME"
-echo "    docker-compose exec app bash"
+echo "    docker-compose -f docker/docker-compose.yml exec app bash"
 
 echo "2.  **Start developing!** Your project files are mounted inside the container at /app."
 echo "    You can modify the code on your host machine, and changes will be reflected in the container."

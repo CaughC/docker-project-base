@@ -1,8 +1,8 @@
 services:
   app:
     build:
-      context: .
-      dockerfile: Dockerfile.args
+      context: ..
+      dockerfile: docker/Dockerfile.args
       args:
         - BASE_IMAGE=${BASE_IMAGE}
         - INSTALL_CONDA=${INSTALL_CONDA}
@@ -13,13 +13,6 @@ services:
       - "6006:6006"
     volumes:
       - ./app:/app
-      - ./docker-entrypoint.d:/docker-entrypoint.d
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
+      - ./docker/docker-entrypoint.d:/docker-entrypoint.d
     stdin_open: true
     tty: true
